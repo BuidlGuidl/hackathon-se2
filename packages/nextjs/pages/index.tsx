@@ -56,7 +56,8 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="fixed inset-0">
-        <div className="bg-[url('/assets/crane.svg')] w-full h-full bg-no-repeat bg-[length:130px] md:bg-[length:430px] absolute bg-[right_-1rem_bottom_-2rem] bg-right-bottom z-0" />
+        <div className="bg-[url('/assets/clouds.svg')] w-full h-full bg-no-repeat bg-[length:500px] md:bg-[length:1200px] absolute bg-[top_9rem_center] z-0 opacity-40" />
+        <div className="bg-[url('/assets/crane.svg')] w-full h-full bg-no-repeat bg-[length:130px] md:bg-[length:430px] absolute bg-[right_-1rem_bottom_-2rem] z-0" />
         <div className="bg-[url('/assets/eth.svg')] w-full h-full bg-no-repeat bg-[length:70px] md:bg-[length:250px] absolute bg-[left_1rem_bottom_2rem]" />
       </div>
     </>
