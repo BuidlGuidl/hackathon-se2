@@ -11,13 +11,13 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="flex items-center flex-col flex-grow z-10 mb-20">
-        <div className="mt-10">
-          <p className="text-xl font-extrabold">Scaffold-Eth-2</p>
+        <div className="mt-10 px-8">
+          <p className="text-lg md:text-xl font-extrabold mb-1">Scaffold-Eth-2</p>
           <Image src="/assets/hackathon.svg" alt="hackathon" width="500" height="60" />
-          <p className="text-right text-xl font-extrabold">April 3-8, 2023</p>
+          <p className="text-right text-lg md:text-xl font-extrabold">April 3-8, 2023</p>
         </div>
 
-        <div className="max-w-lg mt-10">
+        <div className="md:max-w-lg mt-10 px-8">
           <div className="flex flex-col">
             <p className="m-0 text-center text-xl font-extrabold text-white drop-shadow-xl">TL;DR</p>
             <p className="m-0 text-center text-white drop-shadow-xl">
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="card max-w-lg w-full bg-base-100 shadow-xl mt-10">
+        <div className="card  max-w-[90%] md:max-w-lg w-full bg-base-100 shadow-xl mt-10">
           <div className="card-body">
             <p>🧙 Anyone can participate!</p>
             <p>🔥 Get started whenever you want!</p>
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
           <Image src="/assets/prizes.svg" alt="prizes" width="200" height="45" className="my-10" />
         </div>
 
-        <div className="card max-w-lg w-full bg-base-100 shadow-xl mt-10 ">
+        <div className="card max-w-[90%] md:max-w-lg w-full bg-base-100 shadow-xl mt-10 ">
           <div className="card-body">
             <h1 className="flex justify-center text-3xl font-semibold "> 10 ETH </h1>
           </div>
