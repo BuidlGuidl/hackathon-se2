@@ -7,9 +7,14 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>SE-2 Hackathon</title>
-        <meta name="description" content="Join the SE-2 Hackathon by the BuidlGuidl" />
+        <meta name="description" content="Join the SE-2 Hackathon by the BuidlGuidl. April 3-8, 2023." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+        <meta property="og:title" content="SE-2 Hackathon" />
+        <meta property="og:description" content="Join the SE-2 Hackathon by the BuidlGuidl. April 3-8, 2023." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:image" content="/thumbnail.png" />
+        <meta property="twitter:image" content="/thumbnail.png" />
       </Head>
 
       <div className="flex items-center flex-col flex-grow z-10 mb-20">
