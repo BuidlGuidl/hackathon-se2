@@ -11,16 +11,23 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="flex items-center flex-col flex-grow z-10 mb-20">
-        <div>
+        <div className="mt-10">
           <p className="text-xl font-extrabold">Scaffold-Eth-2</p>
           <Image src="/assets/hackathon.svg" alt="hackathon" width="500" height="60" />
           <p className="text-right text-xl font-extrabold">April 3-8, 2023</p>
         </div>
 
-        <div className="max-w-lg">
-          <p className="text-center text-base font-extrabold text-white">
-            TL;DR: Use <a href="https://github.com/scaffold-eth/se-2">SE2</a> to build something cool and win some ETH!
-          </p>
+        <div className="max-w-lg mt-10">
+          <div className="flex flex-col">
+            <p className="m-0 text-center text-xl font-extrabold text-white drop-shadow-xl">TL;DR</p>
+            <p className="m-0 text-center text-white drop-shadow-xl">
+              Use{" "}
+              <a className="link" href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noopener noreferrer">
+                SE2
+              </a>{" "}
+              to build something cool and win some ETH!
+            </p>
+          </div>
         </div>
 
         <div className="card max-w-lg w-full bg-base-100 shadow-xl mt-10">
@@ -36,15 +43,12 @@ const Home: NextPage = () => {
               📥 Project Submissions will open <b>April 8th</b>!
             </p>
 
-            <button
-              className="btn"
-              onClick={() => {
-                window.location.href = "https://github.com/scaffold-eth/se-2";
-              }}
-            >
-              🚀 Fork the repo
-            </button>
-            <button className="btn btn-primary">💬 Join the Telegram Group</button>
+            <a href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noopener noreferrer">
+              <button className="btn w-full">🚀 Fork the repo</button>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <button className="btn btn-primary w-full">💬 Join the Telegram Group</button>
+            </a>
             <button disabled={true} className="btn btn-primary">
               📦 Submit your Repo
             </button>
@@ -61,12 +65,12 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="max-w-lg">
+        <div className="max-w-lg mt-10">
           <p className="text-center text-base font-extrabold text-white">sponsored by</p>
         </div>
 
-        <div className="content-center my-9">
-          <Image src="/assets/bg.svg" alt="hackathon" width="200" height="45" className="my-10" />
+        <div className="content-center">
+          <Image src="/assets/bg.svg" alt="hackathon" width="200" height="45" />
         </div>
       </div>
       <div className="fixed inset-0">
