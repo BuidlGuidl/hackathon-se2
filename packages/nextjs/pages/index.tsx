@@ -8,18 +8,20 @@ const Home: NextPage = () => {
       <Head>
         <title>SE-2 Hackathon</title>
         <meta name="description" content="Join the SE-2 Hackathon by the BuidlGuidl" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
       </Head>
 
       <div className="flex items-center flex-col flex-grow z-10 mb-20">
         <div className="mt-10 px-8">
-          <p className="text-lg md:text-xl font-extrabold mb-1">Scaffold-Eth-2</p>
+          <p className="text-lg md:text-3xl font-archivo-black mb-1">Scaffold-Eth-2</p>
           <Image src="/assets/hackathon.svg" alt="hackathon" width="500" height="60" />
-          <p className="text-right text-lg md:text-xl font-extrabold">April 3-8, 2023</p>
+          <p className="text-right text-lg md:text-xl font-archivo-black mt-1">April 3-8, 2023</p>
         </div>
 
         <div className="md:max-w-lg mt-10 px-8">
           <div className="flex flex-col">
-            <p className="m-0 text-center text-xl font-extrabold text-white drop-shadow-xl">TL;DR</p>
+            <p className="m-0 text-center text-2xl font-archivo-black text-white drop-shadow-xl">TL;DR</p>
             <p className="m-0 text-center text-white drop-shadow-xl">
               Use{" "}
               <a className="link" href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noopener noreferrer">
