@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         <div className="mt-10 px-8">
           <p className="text-lg md:text-3xl font-archivo-black mb-1">Scaffold-Eth-2</p>
           <Image src="/assets/hackathon.svg" alt="hackathon" width="500" height="60" />
-          <p className="text-right text-lg md:text-xl font-archivo-black mt-1">April 3-8, 2023</p>
+          <p className="text-right text-lg md:text-xl font-archivo-black mt-1">March 27 - April 8, 2023</p>
         </div>
 
         <div className="md:max-w-lg mt-10 px-8">
@@ -43,18 +43,21 @@ const Home: NextPage = () => {
             <p>🔥 Get started whenever you want!</p>
             <p>🧑‍🔬 Focus in on the fullstack capabilties of 🏗 Scaffold-Eth-2!</p>
             <p>⚙️ This is a great opportunity to build a prototype that needs both smart contracts and a frontend.</p>
-            <p>😎 No pressure, try to build a two-day prototype sometime throughout the week (April 3-8, 2023).</p>
+            <p>
+              😎 No pressure, try to build a two-day prototype sometime throughout the next two weeks (March 27 - April
+              8).
+            </p>
             <p>🎥 Create a 2 minute video that shows off your app and put it at the top of the README.md.</p>
             <p>💡 Example idea: build a splitter app that works with all wallets and give it away for free!</p>
             <p>🧌 Hack solo, bring a crew, or find a friend in the telegram.</p>
             <p>
-              📥 Project Submissions will open <b>April 8th</b>!
+              📥 Project Submissions will open <b>April 7th</b>!
             </p>
 
             <a href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noopener noreferrer">
               <button className="btn w-full">🚀 Fork the Repo</button>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/+-fGZ-MJ_UZ41MGUx" target="_blank" rel="noopener noreferrer">
               <button className="btn btn-primary w-full">💬 Join the Telegram Group</button>
             </a>
             <button disabled={true} className="btn btn-primary">
