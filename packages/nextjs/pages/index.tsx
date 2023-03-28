@@ -19,8 +19,8 @@ const Home: NextPage = () => {
           content="Join the SE-2 Hackathon by the BuidlGuidl. March 27 - April 8, 2023."
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="/thumbnail.png" />
-        <meta property="twitter:image" content="/thumbnail.png" />
+        <meta property="og:image" content="https://hackathon.buidlguidl.com/thumbnail.png" />
+        <meta property="twitter:image" content="https://hackathon.buidlguidl.com/thumbnail.png" />
       </Head>
 
       <div className="flex items-center flex-col flex-grow z-10 mb-20">
