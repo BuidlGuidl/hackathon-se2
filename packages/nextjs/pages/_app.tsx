@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
+import PlausibleProvider from "next-plausible";
 import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
 import { WagmiConfig } from "wagmi";
@@ -23,17 +24,19 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   }, [setEthPrice, price]);
 
   return (
-    <WagmiConfig client={wagmiClient}>
-      <NextNProgress />
-      <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar}>
-        <div className="flex flex-col min-h-screen bg-primary">
-          <main className="relative flex flex-col flex-1">
-            <Component {...pageProps} />
-          </main>
-        </div>
-        <Toaster />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <PlausibleProvider domain="hackathon.buidlguidl.com">
+      <WagmiConfig client={wagmiClient}>
+        <NextNProgress />
+        <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar}>
+          <div className="flex flex-col min-h-screen bg-primary">
+            <main className="relative flex flex-col flex-1">
+              <Component {...pageProps} />
+            </main>
+          </div>
+          <Toaster />
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </PlausibleProvider>
   );
 };
 

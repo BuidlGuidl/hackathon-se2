@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next";
+import { usePlausible } from "next-plausible";
 
 const Home: NextPage = () => {
+  const plausible = usePlausible();
+
   return (
     <>
       <Head>
@@ -58,7 +61,9 @@ const Home: NextPage = () => {
             </p>
 
             <a href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noopener noreferrer">
-              <button className="btn w-full">🚀 Fork the Repo</button>
+              <button className="btn w-full" onClick={() => plausible("forkRepoButton")}>
+                🚀 Fork the Repo
+              </button>
             </a>
             <a href="https://t.me/+-fGZ-MJ_UZ41MGUx" target="_blank" rel="noopener noreferrer">
               <button className="btn btn-primary w-full">💬 Join the Telegram Group</button>
