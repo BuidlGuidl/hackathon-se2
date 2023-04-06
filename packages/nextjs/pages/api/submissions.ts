@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "POST") {
     try {
       // Validate the request body
-      const { title, description, githubURL, liveURL, telegramHandle, se2Feedback } = req.body;
+      const { title, description, githubURL, liveURL, videoURL, telegramHandle, se2Feedback } = req.body;
       // Add data to the Notion table
       await notion.pages.create({
         parent: { database_id: databaseId },
@@ -18,6 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           description: { rich_text: [{ type: "text", text: { content: description } }] },
           github: { url: githubURL },
           url: { url: liveURL },
+          video: { url: videoURL },
           telegram: { rich_text: [{ type: "text", text: { content: telegramHandle } }] },
           feedback: { rich_text: se2Feedback ? [{ type: "text", text: { content: se2Feedback } }] : [] },
           date: { date: { start: new Date().toISOString() } },

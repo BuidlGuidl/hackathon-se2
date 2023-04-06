@@ -53,7 +53,7 @@ const Home: NextPage = () => {
               😎 No pressure, try to build a two-day prototype sometime throughout the next two weeks (March 27 - April
               8).
             </p>
-            <p>🎥 Create a 2 minute video that shows off your app and put it at the top of the README.md.</p>
+            <p>🎥 Create a 2 minute video that shows off your app.</p>
             <p>💡 Example idea: build a splitter app that works with all wallets and give it away for free!</p>
             <p>🧌 Hack solo, bring a crew, or find a friend in the telegram.</p>
             <p>

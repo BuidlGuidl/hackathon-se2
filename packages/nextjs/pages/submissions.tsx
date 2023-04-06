@@ -9,6 +9,7 @@ interface SubmissionData {
   description?: string;
   githubURL?: string;
   liveURL?: string;
+  videoURL?: string;
   telegramHandle?: string;
   se2Feedback?: string;
 }
@@ -18,6 +19,7 @@ const emtpyData = {
   description: "",
   githubURL: "",
   liveURL: "",
+  videoURL: "",
   telegramHandle: "",
   se2Feedback: "",
 };
@@ -87,6 +89,7 @@ const Submissions: NextPage = () => {
     if (!formData.description) errors.description = "Short description is required";
     if (!formData.githubURL || !urlRegex.test(formData.githubURL)) errors.githubURL = "Valid URL is required";
     if (!formData.liveURL || !urlRegex.test(formData.liveURL)) errors.liveURL = "Valid URL is required";
+    if (!formData.videoURL || !urlRegex.test(formData.videoURL)) errors.videoURL = "Valid URL is required";
     if (!formData.telegramHandle) errors.telegramHandle = "Telegram handle is required";
 
     return errors;
@@ -187,6 +190,23 @@ const Submissions: NextPage = () => {
                     />
                     {errors.liveURL && (
                       <div className="text-error absolute right-0 bottom-0 text-sm">{errors.liveURL}</div>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col relative">
+                    <label className="font-bold" htmlFor="videoURL">
+                      Video URL <span className="text-error">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="videoURL"
+                      name="videoURL"
+                      className="input border-secondary mt-2 mb-6"
+                      value={formData.videoURL}
+                      onChange={handleChange}
+                    />
+                    {errors.videoURL && (
+                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.videoURL}</div>
                     )}
                   </div>
 
