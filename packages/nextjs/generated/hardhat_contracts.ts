@@ -1,8 +1,8 @@
 export default {
-  31337: [
+  1: [
     {
       name: "localhost",
-      chainId: "31337",
+      chainId: "1",
       contracts: {
         YourContract: {
           address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",

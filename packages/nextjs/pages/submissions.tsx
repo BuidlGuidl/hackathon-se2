@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next";
+import { useAccount, useSignMessage } from "wagmi";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 
 interface SubmissionData {
@@ -24,30 +26,31 @@ const emtpyData = {
   se2Feedback: "",
 };
 
+const messagetToSign = "I want to submit my SE-2 Hackathon project as ";
+
 const Submissions: NextPage = () => {
   const [formData, setFormData] = useState(emtpyData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<SubmissionData>({});
+  const { address, isConnected } = useAccount();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    const validationErrors = validateForm(formData);
-    if (Object.keys(validationErrors).length === 0) {
-      setErrors({});
+  const { signMessage } = useSignMessage({
+    async onSuccess(data, variables) {
+      // Verify signature when sign message succeeds
+      console.log("Signed!", data, variables);
       try {
+        const payload = {
+          ...formData,
+          address,
+          signature: data,
+        };
         const response = await fetch("/api/submissions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
 
         if (response.status === 200) {
@@ -75,6 +78,21 @@ const Submissions: NextPage = () => {
       } finally {
         setIsSubmitting(false);
       }
+    },
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    const validationErrors = validateForm(formData);
+    if (Object.keys(validationErrors).length === 0) {
+      setErrors({});
+      signMessage({ message: `${messagetToSign}${address}` });
     } else {
       setErrors(validationErrors);
       setIsSubmitting(false);
@@ -242,9 +260,13 @@ const Submissions: NextPage = () => {
                       <div className="text-error absolute right-0 bottom-0 text-sm">{errors.se2Feedback}</div>
                     )}
                   </div>
-                  <button type="submit" className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}>
-                    Submit
-                  </button>
+                  {isConnected ? (
+                    <button type="submit" className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}>
+                      Submit
+                    </button>
+                  ) : (
+                    <RainbowKitCustomConnectButton />
+                  )}
                 </form>
               ) : (
                 <div className="flex flex-col items-center text-center">

@@ -12,14 +12,12 @@ import * as chains from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import scaffoldConfig from "~~/scaffold.config";
-import { burnerWalletConfig } from "~~/services/web3/wagmi-burner/burnerWalletConfig";
 import { getTargetNetwork } from "~~/utils/scaffold-eth";
 
 const configuredNetwork = getTargetNetwork();
 
 // We always want to have mainnet enabled (ENS resolution, ETH price, etc). But only once.
-const enabledChains =
-  (configuredNetwork.id as number) === 1 ? [configuredNetwork] : [configuredNetwork, chains.mainnet];
+const enabledChains = [chains.sepolia, chains.goerli, chains.polygon, chains.hardhat, chains.mainnet];
 
 /**
  * Chains for the app
@@ -45,19 +43,6 @@ export const appChains = configureChains(
 );
 
 /**
- * list of burner wallet compatable chains
- */
-export const burnerChains = configureChains(
-  [chains.hardhat],
-  [
-    alchemyProvider({
-      apiKey: scaffoldConfig.alchemyApiKey,
-    }),
-    publicProvider(),
-  ],
-);
-
-/**
  * wagmi connectors for the wagmi context
  */
 export const wagmiConnectors = connectorsForWallets([
@@ -70,7 +55,6 @@ export const wagmiConnectors = connectorsForWallets([
       braveWallet({ chains: appChains.chains }),
       coinbaseWallet({ appName: "scaffold-eth", chains: appChains.chains }),
       rainbowWallet({ chains: appChains.chains }),
-      burnerWalletConfig({ chains: burnerChains.chains }),
     ],
   },
 ]);
