@@ -36,9 +36,8 @@ const Submissions: NextPage = () => {
   const { address, isConnected } = useAccount();
 
   const { signMessage } = useSignMessage({
-    async onSuccess(data, variables) {
+    async onSuccess(data) {
       // Verify signature when sign message succeeds
-      console.log("Signed!", data, variables);
       try {
         const payload = {
           ...formData,
@@ -113,6 +112,124 @@ const Submissions: NextPage = () => {
     return errors;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const form = (
+    <form onSubmit={handleSubmit} className="flex flex-col">
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="title">
+          Project title <span className="text-error">*</span>
+        </label>
+        <input
+          type="text"
+          id="title"
+          className="input border-secondary mt-2 mb-6"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+        {errors.title && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.title}</div>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="description">
+          Short description <span className="text-error">*</span>
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          className="input border-secondary mt-2 mb-6 h-auto textarea"
+          rows={3}
+        />
+        {errors.description && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.description}</div>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="githubURL">
+          Github URL <span className="text-error">*</span>
+        </label>
+        <input
+          type="text"
+          id="githubURL"
+          className="input border-secondary mt-2 mb-6"
+          name="githubURL"
+          value={formData.githubURL}
+          onChange={handleChange}
+        />
+        {errors.githubURL && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.githubURL}</div>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="liveURL">
+          Live URL <span className="text-error">*</span>
+        </label>
+        <input
+          type="text"
+          id="liveURL"
+          name="liveURL"
+          className="input border-secondary mt-2 mb-6"
+          value={formData.liveURL}
+          onChange={handleChange}
+        />
+        {errors.liveURL && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.liveURL}</div>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="videoURL">
+          Video URL <span className="text-error">*</span>
+        </label>
+        <input
+          type="text"
+          id="videoURL"
+          name="videoURL"
+          className="input border-secondary mt-2 mb-6"
+          value={formData.videoURL}
+          onChange={handleChange}
+        />
+        {errors.videoURL && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.videoURL}</div>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="telegramHandle">
+          Telegram handle <span className="text-error">*</span>
+        </label>
+        <input
+          type="text"
+          id="telegramHandle"
+          name="telegramHandle"
+          className="input border-secondary mt-2 mb-6"
+          value={formData.telegramHandle}
+          onChange={handleChange}
+        />
+        {errors.telegramHandle && (
+          <div className="text-error absolute right-0 bottom-0 text-sm">{errors.telegramHandle}</div>
+        )}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label className="font-bold" htmlFor="se2Feedback">
+          SE-2 Feedback:
+        </label>
+        <textarea
+          id="se2Feedback"
+          name="se2Feedback"
+          className="input border-secondary mt-2 mb-6 h-auto textarea"
+          onChange={handleChange}
+          rows={3}
+        />
+        {errors.se2Feedback && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.se2Feedback}</div>}
+      </div>
+      {isConnected ? (
+        <button type="submit" className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}>
+          Submit
+        </button>
+      ) : (
+        <RainbowKitCustomConnectButton />
+      )}
+    </form>
+  );
+
   return (
     <>
       <Head>
@@ -144,130 +261,10 @@ const Submissions: NextPage = () => {
           <div className="card-body">
             <div>
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="flex flex-col">
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="title">
-                      Project title <span className="text-error">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="title"
-                      className="input border-secondary mt-2 mb-6"
-                      name="title"
-                      value={formData.title}
-                      onChange={handleChange}
-                    />
-                    {errors.title && <div className="text-error absolute right-0 bottom-0 text-sm">{errors.title}</div>}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="description">
-                      Short description <span className="text-error">*</span>
-                    </label>
-                    <textarea
-                      id="description"
-                      name="description"
-                      value={formData.description}
-                      onChange={handleChange}
-                      className="input border-secondary mt-2 mb-6 h-auto textarea"
-                      rows={3}
-                    />
-                    {errors.description && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.description}</div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="githubURL">
-                      Github URL <span className="text-error">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="githubURL"
-                      className="input border-secondary mt-2 mb-6"
-                      name="githubURL"
-                      value={formData.githubURL}
-                      onChange={handleChange}
-                    />
-                    {errors.githubURL && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.githubURL}</div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="liveURL">
-                      Live URL <span className="text-error">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="liveURL"
-                      name="liveURL"
-                      className="input border-secondary mt-2 mb-6"
-                      value={formData.liveURL}
-                      onChange={handleChange}
-                    />
-                    {errors.liveURL && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.liveURL}</div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="videoURL">
-                      Video URL <span className="text-error">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="videoURL"
-                      name="videoURL"
-                      className="input border-secondary mt-2 mb-6"
-                      value={formData.videoURL}
-                      onChange={handleChange}
-                    />
-                    {errors.videoURL && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.videoURL}</div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="telegramHandle">
-                      Telegram handle <span className="text-error">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="telegramHandle"
-                      name="telegramHandle"
-                      className="input border-secondary mt-2 mb-6"
-                      value={formData.telegramHandle}
-                      onChange={handleChange}
-                    />
-                    {errors.telegramHandle && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.telegramHandle}</div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col relative">
-                    <label className="font-bold" htmlFor="se2Feedback">
-                      SE-2 Feedback:
-                    </label>
-                    <textarea
-                      id="se2Feedback"
-                      name="se2Feedback"
-                      className="input border-secondary mt-2 mb-6 h-auto textarea"
-                      onChange={handleChange}
-                      rows={3}
-                    />
-                    {errors.se2Feedback && (
-                      <div className="text-error absolute right-0 bottom-0 text-sm">{errors.se2Feedback}</div>
-                    )}
-                  </div>
-                  {isConnected ? (
-                    <button type="submit" className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}>
-                      Submit
-                    </button>
-                  ) : (
-                    <RainbowKitCustomConnectButton />
-                  )}
-                </form>
+                <div className="flex flex-col items-center text-center">
+                  <p className="text-2xl font-archivo-black">Submissions are closed!</p>
+                  <p className="text-xl">We will announce the results soon.</p>
+                </div>
               ) : (
                 <div className="flex flex-col items-center text-center">
                   <p className="text-2xl font-archivo-black">Thank you for submitting your project!</p>
