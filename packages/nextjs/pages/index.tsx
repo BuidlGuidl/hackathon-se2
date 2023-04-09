@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { NextPage } from "next";
 import { usePlausible } from "next-plausible";
 
@@ -69,9 +68,9 @@ const Home: NextPage = () => {
             <a href="https://t.me/+-fGZ-MJ_UZ41MGUx" target="_blank" rel="noopener noreferrer">
               <button className="btn btn-primary w-full">💬 Join the Telegram Group</button>
             </a>
-            <Link href="/submissions">
-              <button className="btn btn-primary w-full mt-5 btn-lg">📦 Submit your project</button>
-            </Link>
+            <button disabled={true} className="btn btn-primary w-full mt-5 btn-lg">
+              📦 Submissions Closed!
+            </button>
           </div>
         </div>
 

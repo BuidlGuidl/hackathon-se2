@@ -9,6 +9,9 @@ const databaseId = process.env.NOTION_DATABASE_ID ?? "";
 const messagetToSign = "I want to submit my SE-2 Hackathon project as ";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.status(401).json({ message: "Submissions are closed!" });
+  return;
+
   if (req.method === "POST") {
     try {
       // Validate the request body
